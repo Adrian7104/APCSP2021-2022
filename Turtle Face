@@ -1,0 +1,54 @@
+#   import turtle
+import turtle as trtl
+
+# create turtle object 
+painter = trtl.Turtle()
+
+#ask the user which color face they want
+color = input("select a color for the face.")
+
+# drawing the face
+painter.penup()
+painter.goto(0,-100)
+painter.pendown()
+painter.begin_fill() 
+painter.pencolor("black")
+painter.fillcolor(color)
+painter.circle(150)
+painter.end_fill()
+
+# drawing the first eye
+color = input("what color first eye?")
+painter.penup()
+painter.goto(60,50)
+painter.pendown()
+painter.begin_fill()
+painter.fillcolor("black")
+painter.fillcolor(color)
+painter.circle(25)
+painter.end_fill()
+
+# drawing the second eye
+color = input("what color second eye?")
+painter.penup()
+painter.goto(-60,50)
+painter.pendown
+painter.begin_fill()
+painter.fillcolor(color)
+painter.circle(25)
+painter.end_fill()
+
+# drawing the mouth
+color = input("what color mouth?")
+painter.penup()
+painter.goto(-75,-10)
+painter.pendown()
+painter.right(90)
+painter.begin_fill()
+painter.fillcolor(color)
+painter.circle(75,180)
+painter.end_fill()
+
+# keep screen running
+wn = trtl.Screen()
+wn.mainloop()
