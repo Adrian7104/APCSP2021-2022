@@ -1,0 +1,76 @@
+
+import turtle as trtl
+import random as rand
+#-----setup-----
+apple_image = "apple.gif" # Store the file name of your shape
+
+wn = trtl.Screen()
+wn.setup(width=1.0, height=1.0)
+wn.addshape(apple_image) # Make the screen aware of the new file
+wn.bgpic("background.gif")
+apple = trtl.Turtle()
+alphabet_list = ["a", "b", "c", "d", "e", "f", "g","h","i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "w", "x", "y", "z"]
+randlet = ''
+ycor = 100
+#-----functions-----
+# given a turtle, set that turtle to be shaped by the image file
+def draw_apple(active_apple):
+  active_apple.shape(apple_image)
+  wn.update()
+
+apple.color("black")
+apple.penup()
+apple.goto(18,40)
+apple.write("A", font = ("Arial", 55, "bold"))
+apple.pendown()
+
+def draw_an_A():
+  apple.clear()
+  apple.penup()
+  apple.goto(0,-400)
+  apple.pendown()
+  apple.clear()
+
+def change_randlet():
+  global randlet
+  randlet = rand.choice(alphabet_list)
+  return randlet
+
+def change_x():
+  global randx
+  randx = rand.randint(-200,200)
+  return randx
+
+def change_y():
+  global randy
+  randy = rand.randint(-200,200)
+  return randy
+
+def random_loc():
+  apple.clear()
+  apple.penup()
+  apple.goto(change_x(),change_y())
+  apple.pendown()
+  apple.write(change_randlet(),font=("arial", 55,"bold"))
+  wn.update()
+
+def drop_apple():
+  apple.clear()
+  apple.penup()
+  apple.goto(randx,-400)
+  apple.pendown()
+  wn.update()
+
+#-----function calls-----
+
+wn.onkeypress(draw_an_A, "a")  
+draw_apple(apple)
+
+wn.onkeypress(random_loc, "space")
+draw_apple(apple)
+
+wn.onkeypress(drop_apple, randlet)
+draw_apple(apple)
+
+wn.listen()
+wn.mainloop()
